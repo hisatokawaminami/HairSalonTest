@@ -1,0 +1,20 @@
+<h1>Stylists</h1>
+
+<form action="/stylists" method="post">
+  <label for="newitem">Add a Stylist (name)</label>
+  <input id="newstylist" name="newstylist" type="text" required>
+
+  <!-- <label for="newdate">Add a due date!</label>
+  <input id="newdate" name="newdate" type="text" required>
+
+  <label for="category">Select a Category</label>
+  <select class="selectCat" name="category">
+    @foreach (var categories in Model)
+    {
+    <option value="@categories.GetId()">@categories.GetName()</option>
+    } -->
+
+  </select>
+  <button type="submit">Submit</button>
+</form><br>
+<a href="/stylists">View All Stylists</a>
