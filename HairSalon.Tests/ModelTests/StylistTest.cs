@@ -20,7 +20,7 @@ namespace HairSalon.Tests
       public void GetName_ReturnsName_String()
       {
         //Arrange
-        string name = "Yoko Ono";
+        string name = "Yoko Bono";
         Stylist newStylist = new Stylist(name);
 
         //Act
@@ -29,5 +29,18 @@ namespace HairSalon.Tests
         //Assert
         Assert.AreEqual(name, result);
       }
+      [TestMethod]
+      public void SetName_SetName_String()
+      {
+        //Arrange
+        string name = "Yoko Bono";
+        Stylist newStylist = new Stylist(name);
+
+        //Act
+        string updatedName = "Jon Lemon";
+        newStylist.SetName(updatedName);
+        string result = newStylist.GetName();
+      }
+
   }
 }
