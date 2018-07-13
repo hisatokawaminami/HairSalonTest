@@ -9,11 +9,14 @@ namespace HairSalon.Models
   {
     private int _id;
     private string _name;
+    private int _phone;
 
-    public Stylist (string Name, int Id = 0)
+
+    public Stylist (string Name, int Phone, int Id = 0)
     {
       _id = Id;
       _name = Name;
+      _phone = Phone;
     }
 
     public override bool Equals(System.Object otherStylist)
@@ -47,6 +50,10 @@ namespace HairSalon.Models
     {
       return _id;
     }
+    public int GetPhone()
+    {
+      return _phone;
+    }
     public static void DeleteAll()
     {
       MySqlConnection conn = DB.Connection();
@@ -75,7 +82,8 @@ namespace HairSalon.Models
       {
         int stylistId = rdr.GetInt32(0);
         string stylistName = rdr.GetString(1);
-        Stylist newStylist = new Stylist(stylistName, stylistId);
+        int stylistPhone = rdr.GetInt32(2);
+        Stylist newStylist = new Stylist(stylistName, stylistPhone, stylistId);
         allStylists.Add(newStylist);
       }
       conn.Close();
@@ -91,12 +99,17 @@ namespace HairSalon.Models
       conn.Open();
 
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO stylists (name) VALUES (@StylistName);";
+      cmd.CommandText = @"INSERT INTO stylists (name, phone) VALUES (@StylistName, @StylistPhone);";
 
       MySqlParameter name = new MySqlParameter();
       name.ParameterName = "@StylistName";
       name.Value = this._name;
       cmd.Parameters.Add(name);
+
+      MySqlParameter phone = new MySqlParameter();
+      phone.ParameterName = "@StylistPhone";
+      phone.Value = this._phone;
+      cmd.Parameters.Add(phone);
 
       cmd.ExecuteNonQuery();
       _id = (int) cmd.LastInsertedId;
@@ -124,14 +137,16 @@ namespace HairSalon.Models
 
       int stylistId = 0;
       string stylistName = "";
+      int stylistPhone = 0;
 
       while (rdr.Read())
       {
         stylistId = rdr.GetInt32(0);
         stylistName = rdr.GetString(1);
+        stylistPhone = rdr.GetInt32(2);
       }
 
-      Stylist foundStylist = new Stylist(stylistName, stylistId);
+      Stylist foundStylist = new Stylist(stylistName, stylistPhone, stylistId);
 
       conn.Close();
       if (conn != null)

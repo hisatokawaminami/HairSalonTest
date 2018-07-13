@@ -21,7 +21,8 @@ namespace HairSalon.Tests
       {
         //Arrange
         string name = "Yoko Bono";
-        Stylist newStylist = new Stylist(name);
+        int phone = 0;
+        Stylist newStylist = new Stylist(name, phone);
 
         //Act
         string result = newStylist.GetName();
@@ -34,7 +35,9 @@ namespace HairSalon.Tests
       {
         //Arrange
         string name = "Yoko Bono";
-        Stylist newStylist = new Stylist(name);
+        int phone = 0;
+
+        Stylist newStylist = new Stylist(name, phone);
 
         //Act
         string updatedName = "Jon Lemon";
@@ -58,8 +61,9 @@ namespace HairSalon.Tests
       public void Equals_ReturTrueIfNamesAreTheSame_Stylist()
       {
         //Arrange, Act
-        Stylist firstStylist = new Stylist("Yoko Bono");
-        Stylist secondStylist = new Stylist("Yoko Bono");
+        Stylist firstStylist = new Stylist("Yoko Bono", 0);
+        Stylist secondStylist = new Stylist("Yoko Bono", 0);
+
 
         //Assert
         Assert.AreEqual(firstStylist, secondStylist);
@@ -68,7 +72,7 @@ namespace HairSalon.Tests
       public void Save_SavesToDatabase_StylistList()
       {
         //Arrange
-        Stylist testStylist = new Stylist("Yoko Bono");
+        Stylist testStylist = new Stylist("Yoko Bono", 0);
 
         //Act
         testStylist.Save();
@@ -82,7 +86,7 @@ namespace HairSalon.Tests
       public void Save_AssignsIdToObject_Id()
       {
         //Arrange
-        Stylist testStylist = new Stylist("Yoko Bono");
+        Stylist testStylist = new Stylist("Yoko Bono", 0);
 
         //Act
         testStylist.Save();
@@ -98,7 +102,7 @@ namespace HairSalon.Tests
       public void Find_FindsItemInDatabase_Item()
       {
         //Arrange
-        Stylist testStylist = new Stylist("Yoko Bono");
+        Stylist testStylist = new Stylist("Yoko Bono", 0);
         testStylist.Save();
 
         //Act
