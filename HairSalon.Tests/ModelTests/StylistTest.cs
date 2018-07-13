@@ -94,5 +94,18 @@ namespace HairSalon.Tests
         //Assert
         Assert.AreEqual(testId, result);
       }
+      [TestMethod]
+      public void Find_FindsItemInDatabase_Item()
+      {
+        //Arrange
+        Stylist testStylist = new Stylist("Yoko Bono");
+        testStylist.Save();
+
+        //Act
+        Stylist foundStylist = Stylist.Find(testStylist.GetId());
+
+        //Assert
+        Assert.AreEqual(testStylist,foundStylist);
+      }
   }
 }
