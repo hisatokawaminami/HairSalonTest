@@ -9,8 +9,7 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">*</th>
-      <th scope="col">**</th>
+
     </tr>
   </thead>
   <tbody>
@@ -18,7 +17,7 @@
   @foreach(var stylists in Model)
   {
 <tr>
-      <td>@stylists.GetName() | <a href="/stylists/@stylists.GetId()/update">Edit</a> | <a href="/stylists/@stylists.GetId()/delete">Delete</a>
+      <td>@stylists.GetName() |<a href="/stylists/@stylists.GetId()/details">View</a> | <a href="/stylists/@stylists.GetId()/update">Edit</a> | <a href="/stylists/@stylists.GetId()/delete">Delete</a>
       </td>
 
 </tr>
