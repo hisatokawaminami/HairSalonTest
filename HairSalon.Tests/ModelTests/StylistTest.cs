@@ -6,7 +6,7 @@ using System;
 namespace HairSalon.Tests
 {
   [TestClass]
-  public class StylistTests
+  public class StylistTests : IDisposable
   {
     public void Dispose()
     {
@@ -63,6 +63,36 @@ namespace HairSalon.Tests
 
         //Assert
         Assert.AreEqual(firstStylist, secondStylist);
+      }
+      [TestMethod]
+      public void Save_SavesToDatabase_StylistList()
+      {
+        //Arrange
+        Stylist testStylist = new Stylist("Yoko Bono");
+
+        //Act
+        testStylist.Save();
+        List<Stylist> result = Stylist.GetAll();
+        List<Stylist> testList = new List<Stylist>{testStylist};
+
+        //Assert
+        CollectionAssert.AreEqual(testList, result);
+      }
+      [TestMethod]
+      public void Save_AssignsIdToObject_Id()
+      {
+        //Arrange
+        Stylist testStylist = new Stylist("Yoko Bono");
+
+        //Act
+        testStylist.Save();
+        Stylist savedStylist = Stylist.GetAll()[0];
+
+        int result = savedStylist.GetId();
+        int testId = testStylist.GetId();
+
+        //Assert
+        Assert.AreEqual(testId, result);
       }
   }
 }

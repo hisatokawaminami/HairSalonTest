@@ -25,8 +25,9 @@ namespace HairSalon.Models
       else
       {
         Stylist newStylist = (Stylist) otherStylist;
+        bool idEquality = (this.GetId() == newStylist.GetId());
         bool nameEquality = (this.GetName() == newStylist.GetName());
-        return (nameEquality);
+        return (idEquality && nameEquality);
       }
     }
     public override int GetHashCode()
@@ -41,6 +42,10 @@ namespace HairSalon.Models
     public void SetName(string newName)
     {
       _name = newName;
+    }
+    public int GetId()
+    {
+      return _id;
     }
     public static void DeleteAll()
     {
@@ -79,6 +84,28 @@ namespace HairSalon.Models
         conn.Dispose();
       }
       return allStylists;
+    }
+    public void Save()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO stylists (name) VALUES (@StylistName);";
+
+      MySqlParameter name = new MySqlParameter();
+      name.ParameterName = "@StylistName";
+      name.Value = this._name;
+      cmd.Parameters.Add(name);
+
+      cmd.ExecuteNonQuery();
+      _id = (int) cmd.LastInsertedId;
+
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
     }
 
   }
