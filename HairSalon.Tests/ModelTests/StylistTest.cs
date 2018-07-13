@@ -8,10 +8,10 @@ namespace HairSalon.Tests
   [TestClass]
   public class StylistTests
   {
-    // public void Dispose()
-    // {
-    //   Stylist.DeleteAll();
-    // }
+    public void Dispose()
+    {
+      Stylist.DeleteAll();
+    }
     public StylistTests()
     {
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=hisato_kawaminami_test;";
@@ -25,7 +25,7 @@ namespace HairSalon.Tests
 
         //Act
         string result = newStylist.GetName();
-        Console.WriteLine(result);
+        // Console.WriteLine(result);
         //Assert
         Assert.AreEqual(name, result);
       }
@@ -40,7 +40,19 @@ namespace HairSalon.Tests
         string updatedName = "Jon Lemon";
         newStylist.SetName(updatedName);
         string result = newStylist.GetName();
-      }
 
+        Console.WriteLine(name);
+        Console.Write(updatedName);
+      }
+      [TestMethod]
+      public void GetAll_DbStartsEmpty_0()
+      {
+        //Arrange
+        //ACT
+        int result = Stylist.GetAll().Count;
+
+        //Assert
+        Assert.AreEqual(0, result);
+      }
   }
 }
