@@ -54,5 +54,15 @@ namespace HairSalon.Tests
         //Assert
         Assert.AreEqual(0, result);
       }
+      [TestMethod]
+      public void Equals_ReturTrueIfNamesAreTheSame_Stylist()
+      {
+        //Arrange, Act
+        Stylist firstStylist = new Stylist("Yoko Bono");
+        Stylist secondStylist = new Stylist("Yoko Bono");
+
+        //Assert
+        Assert.AreEqual(firstStylist, secondStylist);
+      }
   }
 }
