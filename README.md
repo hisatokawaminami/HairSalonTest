@@ -26,9 +26,9 @@ Clone from:
 https://github.com/hisatokawaminami/HairSalonDB.git
 
 Re-create the databases with terminal:
-- CREATE DATABASE hair_salon;
-- USE hair_salon;
-- CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255));
+- CREATE DATABASE hisato_kawaminami;
+- USE hisato_kawaminami;
+- CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255), phone INT);
 - CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255));
 
 ## Credits

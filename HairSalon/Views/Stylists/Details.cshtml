@@ -1,10 +1,15 @@
-<h1>Stylist: @Model.GetName()</h1>
 
-<ul>
-  test
-  <!-- @foreach(var item in Model.GetItems())
-  {
-    <li>@item.GetDescription()</li>
-  } -->
-</ul>
- 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stylists</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  </head>
+  <h1>Stylist: @Model.GetName()</h1><br>
+<h4>Phone Number: @Model.GetPhone()</h4>
+
+<h4>Clients:</h4>
+
+<br><br>
+<a href="/stylists/add" class="btn btn-success">Add Clients</a><br>
+</html>

@@ -24,5 +24,12 @@ namespace HairSalon.Controllers
       // List<Item> all = Item.GetAll();
       return RedirectToAction("Index");
     }
+    [HttpGet("/stylists/{id}/details")]
+    public ActionResult Details(int id)
+    {
+      Stylist thisStylist = Stylist.Find(id);
+      return View(thisStylist);
+    }
+
   }
 }
