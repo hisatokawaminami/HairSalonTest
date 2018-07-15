@@ -11,7 +11,7 @@ Create a program that shows a list of stylists and their clients. A user is able
 ## Spec
 
 |Behavior|	Input|Output	|
-|:--------|:-------------:|:--------------:|:---:|:---:|
+|:--------|:-------------:|:--------------:|
 |adds names of stylists| Yoko Bono| Yoko Bono
 |adds names of clients | Jon Lemon | Jon Lemon
 |displays a list of stylists|
