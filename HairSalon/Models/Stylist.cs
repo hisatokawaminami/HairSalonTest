@@ -10,6 +10,7 @@ namespace HairSalon.Models
     private int _id;
     private string _name;
     private int _phone;
+    
 
 
     public Stylist (string Name, int Phone, int Id = 0)
