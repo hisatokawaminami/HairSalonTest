@@ -6,13 +6,13 @@ namespace HairSalon.Controllers
 {
   public class StylistsController : Controller
   {
-    [HttpGet("/stylists")]
+    [HttpGet("/stylists/")]
     public ActionResult Index()
     {
       return View(Stylist.GetAll());
     }
     [HttpGet("/stylists/add")]
-    public ActionResult CreateForm()
+    public ActionResult StylistForm()
     {
       return View(Stylist.GetAll());
     }
@@ -24,10 +24,13 @@ namespace HairSalon.Controllers
       // List<Item> all = Item.GetAll();
       return RedirectToAction("Index");
     }
-    [HttpGet("/stylists/{id}/details")]
-    public ActionResult Details(int id)
+
+    [HttpGet("/stylists/{id}/clients")]
+    public ActionResult List(int id)
     {
       Stylist thisStylist = Stylist.Find(id);
+
+      List<Client> allClients = thisStylist.GetClients();
       return View(thisStylist);
     }
 

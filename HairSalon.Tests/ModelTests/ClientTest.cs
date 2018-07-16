@@ -31,8 +31,8 @@ namespace HairSalon.Tests
     public void Equals_ReturnsTrueIfClientsAreTheSame_Client()
     {
       //Arrange, Act
-      Client firstClient = new Client("Yoko Bono");
-      Client secondClient = new Client("Yoko Bono");
+      Client firstClient = new Client("Yoko Bono", 1);
+      Client secondClient = new Client("Yoko Bono", 1);
 
       //Assert
       Assert.AreEqual(firstClient, secondClient);
@@ -41,7 +41,7 @@ namespace HairSalon.Tests
     public void Save_SavesToDatabase_ClientList()
     {
       //Arrange
-      Client testClient = new Client("Yoko Bono");
+      Client testClient = new Client("Yoko Bono", 0);
       testClient.Save();
 
       //Act
@@ -56,7 +56,7 @@ namespace HairSalon.Tests
     public void Save_DatabaseAssignsIdToClient_Id()
     {
       //Arrange
-      Client testClient = new Client("Yoko Bono");
+      Client testClient = new Client("Yoko Bono", 0);
       testClient.Save();
 
       //Act
@@ -72,7 +72,7 @@ namespace HairSalon.Tests
     public void Find_FindsClientInDatabase_Client()
     {
       //Arrange
-      Client testClient = new Client("Yoko Bono");
+      Client testClient = new Client("Yoko Bono", 1);
       testClient.Save();
 
       //Act

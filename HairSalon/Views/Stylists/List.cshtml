@@ -1,0 +1,10 @@
+<h1>Stylist: @Model.GetName()</h1>
+
+Clients:
+<ul>
+  @foreach(var client in Model.GetClients())
+  {
+    <li>@client.GetName()</li>
+  }
+</ul>
+<a href="/">Go Back</a><br>
