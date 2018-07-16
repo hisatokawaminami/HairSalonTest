@@ -10,15 +10,14 @@ Create a program that shows a list of stylists and their clients. A user is able
 
 ## Spec
 
-|Behavior|	Input|Output	|
-|:--------|:-------------:|:--------------:|
-|adds names of stylists| Yoko Bono| Yoko Bono
-|adds names of clients | Jon Lemon | Jon Lemon
-|displays a list of stylists|
+- Allows user to see a list of all of saved stylists
+- Allows user to see the stylist's phone numbers and their clients
+- Allows user to add stylists
+- Allows user to add clients
 
 ## Technology Used
 
-C#, .NET Core 1.1, mySQL
+C#, .NET Core 1.1, mySQL, MAMP
 
 ## Installation
 
@@ -29,7 +28,7 @@ Re-create the databases with terminal:
 - CREATE DATABASE hisato_kawaminami;
 - USE hisato_kawaminami;
 - CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255), phone INT);
-- CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255));
+- CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255), stylist_id INT);
 
 ## Credits
 Hisato Kawaminami
