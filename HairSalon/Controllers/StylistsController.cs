@@ -17,9 +17,9 @@ namespace HairSalon.Controllers
       return View(Stylist.GetAll());
     }
     [HttpPost("/stylists")]
-    public ActionResult CollectInfo(string newstylist, int newphone)
+    public ActionResult CollectInfo(string newstylist, int newphone, int newclientId)
     {
-      Stylist newStylist = new Stylist(newstylist, newphone);
+      Stylist newStylist = new Stylist(newstylist, newphone, newclientId);
       newStylist.Save();
       // List<Item> all = Item.GetAll();
       return RedirectToAction("Index");

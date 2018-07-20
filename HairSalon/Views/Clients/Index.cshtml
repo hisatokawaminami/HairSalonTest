@@ -11,6 +11,8 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
+      <th scope="col">Stylist</th>
+
     </tr>
   </thead>
   <tbody>
@@ -18,7 +20,7 @@
   @foreach(var clients in Model)
   {
 <tr>
-      <td>@clients.GetName()  | <a href="/clients/@clients.GetId()/delete">Delete</a></td>
+      <td>@clients.GetName()  | <a href="/clients/@clients.GetId()/edit">Edit</a>| <a href="/clients/@clients.GetId()/delete">Delete</a></td>
 
 
 

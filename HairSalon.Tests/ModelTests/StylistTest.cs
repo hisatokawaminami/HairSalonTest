@@ -10,6 +10,7 @@ namespace HairSalon.Tests
   {
     public void Dispose()
     {
+
       Stylist.DeleteAll();
     }
     public StylistTests()
@@ -22,7 +23,8 @@ namespace HairSalon.Tests
         //Arrange
         string name = "Yoko Bono";
         int phone = 0;
-        Stylist newStylist = new Stylist(name, phone);
+        int clientId = 1;
+        Stylist newStylist = new Stylist(name, phone, clientId);
 
         //Act
         string result = newStylist.GetName();
@@ -36,8 +38,9 @@ namespace HairSalon.Tests
         //Arrange
         string name = "Yoko Bono";
         int phone = 0;
+        int clientId = 1;
 
-        Stylist newStylist = new Stylist(name, phone);
+        Stylist newStylist = new Stylist(name, phone, clientId);
 
         //Act
         string updatedName = "Jon Lemon";
@@ -60,8 +63,8 @@ namespace HairSalon.Tests
       public void Equals_ReturTrueIfNamesAreTheSame_Stylist()
       {
         //Arrange, Act
-        Stylist firstStylist = new Stylist("Yoko Bono", 0);
-        Stylist secondStylist = new Stylist("Yoko Bono", 0);
+        Stylist firstStylist = new Stylist("Yoko Bono", 0, 1);
+        Stylist secondStylist = new Stylist("Yoko Bono", 0, 1);
 
 
         //Assert
@@ -71,7 +74,7 @@ namespace HairSalon.Tests
       public void Save_SavesToDatabase_StylistList()
       {
         //Arrange
-        Stylist testStylist = new Stylist("Yoko Bono", 0);
+        Stylist testStylist = new Stylist("Yoko Bono", 0, 1);
 
         //Act
         testStylist.Save();
@@ -85,7 +88,7 @@ namespace HairSalon.Tests
       public void Save_AssignsIdToObject_Id()
       {
         //Arrange
-        Stylist testStylist = new Stylist("Yoko Bono", 0);
+        Stylist testStylist = new Stylist("Yoko Bono", 0, 1);
 
         //Act
         testStylist.Save();
@@ -101,7 +104,7 @@ namespace HairSalon.Tests
       public void Find_FindsItemInDatabase_Item()
       {
         //Arrange
-        Stylist testStylist = new Stylist("Yoko Bono", 0);
+        Stylist testStylist = new Stylist("Yoko Bono", 0, 1);
         testStylist.Save();
 
         //Act
@@ -115,9 +118,9 @@ namespace HairSalon.Tests
       public void Delete_A_Specific_Stylist()
       {
         //Arrange
-        Stylist testStylist = new Stylist("Yoko", 123);
+        Stylist testStylist = new Stylist("Yoko", 123, 1);
         testStylist.Save();
-        Stylist testStylist2 = new Stylist("Jon", 45);
+        Stylist testStylist2 = new Stylist("Jon", 45, 2);
         testStylist2.Save();
 
         //Act
@@ -135,7 +138,9 @@ namespace HairSalon.Tests
         //Arrange
         string testName = "Yoko";
         int phone = 000;
-        Stylist testStylist = new Stylist(testName, phone);
+        int clientId = 1;
+
+        Stylist testStylist = new Stylist(testName, phone, clientId);
         testStylist.Save();
         string editName = "John";
 
