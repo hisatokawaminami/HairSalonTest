@@ -6,13 +6,31 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
   </head>
 
-<h4>Clients:</h4>
-<ul>
+  <h1>Clients</h1>
+  <table class="table table-hover table-danger">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+  <tbody>
+
   @foreach(var clients in Model)
   {
-    <li>@clients.GetName()</li>
+<tr>
+      <td>@clients.GetName()  | <a href="/clients/@clients.GetId()/delete">Delete</a></td>
+
+
+
+
+</tr>
   }
-</ul>
+
+  </tbody>
+</table>
+
+
+
 <br><br>
 <a href="/clients/add" class="btn btn-success">Add Clients</a><br>
 </html>
