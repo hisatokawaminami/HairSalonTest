@@ -44,8 +44,7 @@ namespace HairSalon.Tests
         newStylist.SetName(updatedName);
         string result = newStylist.GetName();
 
-        Console.WriteLine(name);
-        Console.Write(updatedName);
+
       }
       [TestMethod]
       public void GetAll_DbStartsEmpty_0()
@@ -110,6 +109,25 @@ namespace HairSalon.Tests
 
         //Assert
         Assert.AreEqual(testStylist,foundStylist);
+      }
+
+      [TestMethod]
+      public void Delete_A_Specific_Stylist()
+      {
+        //Arrange
+        Stylist testStylist = new Stylist("Yoko", 123);
+        testStylist.Save();
+        Stylist testStylist2 = new Stylist("Jon", 45);
+        testStylist2.Save();
+
+        //Act
+        testStylist.Delete();
+        List<Stylist> expectedList = new List<Stylist>{testStylist2};
+
+        //Assert
+        List<Stylist> outputList = Stylist.GetAll();
+        Assert.IsTrue(outputList.Count ==1);
+        CollectionAssert.AreEqual(expectedList, outputList);
       }
   }
 }
